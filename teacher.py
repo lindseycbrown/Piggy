@@ -57,10 +57,10 @@ class PiggyParent(gopigo3.GoPiGo3):
                 self.fwd()
                 time.sleep(1)
                 self.stop()
-                response = str.lower(input("Reduce left, increade left or drive? (r/i/d): "))
-                if response == 'r':
+                response = str.lower(input("Reduce left, reduce right or drive? (l/r/d): "))
+                if response == 'l':
                     self.LEFT_DEFAULT -= 5
-                elif response == 'i':
+                elif response == 'r':
                     self.RIGHT_DEFAULT -= 5
                 elif response == 'd':
                     self.fwd()

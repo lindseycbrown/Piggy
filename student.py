@@ -58,27 +58,27 @@ class Piggy(PiggyParent):
     '''
     def lindsey(self):
       self.fwd()
-      time.sleep(2)
+      time.sleep(0.8)
       self.stop()
       
       self.right()
-      time.sleep(2)
+      time.sleep(0.8)
       self.stop()
       
       self.fwd()
-      time.sleep(2)
+      time.sleep(0.8)
       self.stop()
       
       self.right()
-      time.sleep(2)
+      time.sleep(0.8)
       self.stop()
 
       self.fwd()
-      time.sleep(2)
+      time.sleep(0.8)
       self.stop()
       
       self.right()
-      time.sleep(2)
+      time.sleep(0.8)
       self.stop()
 
   

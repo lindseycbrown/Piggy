@@ -113,6 +113,8 @@ class Piggy(PiggyParent):
       self.servo(1000)
       time.sleep(3)
       self.servo(1000)
+      self.servo(2000)
+      time.sleep(3)
       return (True)
 
       

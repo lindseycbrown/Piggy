@@ -112,10 +112,15 @@ class Piggy(PiggyParent):
     def safe_to_dance(self):
       self.servo(1000)
       time.sleep(3)
-      self.servo(1000)
+      if self.read_distance() < 300:
+        return False
+        
       self.servo(2000)
       time.sleep(3)
-      return (True)
+      if self.read_distance() < 300:
+        return False
+      
+      return True
 
       
         

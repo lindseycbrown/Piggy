@@ -118,7 +118,7 @@ class Piggy(PiggyParent):
 
       
         
-        pass
+        
 
     def shake(self):
         """ Another example move """

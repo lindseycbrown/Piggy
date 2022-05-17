@@ -1,4 +1,4 @@
-#!/usr/bin python3
+ #!/usr/bin python3
 from teacher import PiggyParent
 import sys
 import time
@@ -41,7 +41,8 @@ class Piggy(PiggyParent):
                 "f": ("Follow", self.follow),
                 "c": ("Calibrate", self.calibrate),
                 "q": ("Quit", self.quit),
-                "l": ("Lindsey", self.lindsey)
+                "l": ("Lindsey", self.lindsey), 
+                "B": ("Box", self.move_around_box)
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):
@@ -121,7 +122,36 @@ class Piggy(PiggyParent):
         return False
       
       return True
-
+      
+    def move_around_box(self):
+      safe =True
+      while True:
+        self.servo(self.MIPOINT)
+        sel.fwd()
+        if self.read.distance() <= 300:
+          self.stop()
+          self.servo(2500)
+          self.turn_by_degree(60)
+          while self.read_distance() <=500:
+            self.fwd()
+            if sef.read_distance() <=300:
+              self.stop()
+              self.turn_by_deg(15)
+          self.fwd()
+          time.sleep(1)
+          self.stop()
+          self.turn_by_deg(-45)
+          slf.servo(2500)
+          while safe:
+            if self.read_distance() <= 300:
+              self.turn_by_deg(90)
+              self.fwd()
+              time.sleep(1)
+              self.stop
+              safe= True
+            else:
+              self.turn_by_deg(-90)
+              safe = False
       
         
         

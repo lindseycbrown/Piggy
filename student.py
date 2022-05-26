@@ -149,9 +149,9 @@ class Piggy(PiggyParent):
             if self.read_distance() < 500:
               self.around_wall()
             else:
-              self.right(primary=90, counter=60)
+              self.right(primary=90, counter=20)
               time.sleep(.5)
-              self.left(primary= 90, counter= 60)
+              self.left(primary= 90, counter= 20)
               time.sleep(.5)
               self.stop()
              
@@ -160,9 +160,9 @@ class Piggy(PiggyParent):
           if self.read_distance() < 500:
             self.around_wall()
           else:
-            self.left(primary=90, counter=60)
+            self.left(primary=90, counter=20)
             time.sleep(.5)
-            self.right(primary= 90, counter= 60)
+            self.right(primary= 90, counter= 20)
             time.sleep(.5)
             self.stop()
             

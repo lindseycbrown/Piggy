@@ -43,10 +43,10 @@ class Piggy(PiggyParent):
                 "q": ("Quit", self.quit),
                 "l": ("Lindsey", self.lindsey), 
                 "b": ("Box", self.move_around_box),
-                "e": ("Eye", move_and_look),
-                "z": ("Swerve", move_and_swerve), 
-                "w": ("Wall", around_wall),
-                "q": ("One Swerve", serve)
+                "e": ("Eye", self.move_and_look),
+                "z": ("Swerve", self.move_and_swerve), 
+                "w": ("Wall", self.around_wall),
+                "q": ("One Swerve", self.serve)
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):

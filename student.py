@@ -120,7 +120,7 @@ class Piggy(PiggyParent):
       if self.read_distance() < 300:
         return False
         
-      self.servo(2000)
+      self.servo(2300)
       time.sleep(3)
       if self.read_distance() < 300:
         return False
@@ -140,13 +140,13 @@ class Piggy(PiggyParent):
 
     def move_and_look(self):
       while True:
-          self.fwd()
-          self.servo(2000)
+          self.fwd(30,30)
+          self.servo(2300)
           time.sleep(.5)
-          if self.read_distance() < 500:
+          if self.read_distance() < 350:
             self.stop()
             self.servo(self.MIDPOINT)
-            if self.read_distance() < 500:
+            if self.read_distance() < 350:
               self.around_wall()
             else:
               self.right(primary=90, counter=20)
@@ -157,7 +157,7 @@ class Piggy(PiggyParent):
              
           self.stop()
           self.servo(self.MIDPOINT)
-          if self.read_distance() < 500:
+          if self.read_distance() < 350:
             self.around_wall()
           else:
             self.left(primary=90, counter=20)

@@ -42,7 +42,11 @@ class Piggy(PiggyParent):
                 "c": ("Calibrate", self.calibrate),
                 "q": ("Quit", self.quit),
                 "l": ("Lindsey", self.lindsey), 
-                "b": ("Box", self.move_around_box)
+                "b": ("Box", self.move_around_box),
+                "e": ("Eye", move_and_look),
+                "z": ("Swerve", move_and_swerve), 
+                "w": ("Wall", around_wall),
+                "q": ("One Swerve", serve)
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):
@@ -157,11 +161,88 @@ class Piggy(PiggyParent):
         
         
 
-    def shake(self):
-        """ Another example move """
-        self.deg_fwd(720)
-        self.stop()
+    def move_and_look(self):
+      while True:
+        while self.read_distance() > 500:
+          self.fwd()
+          self.servo(2000)
+          time.sleep(.5)
+          self.servo(1000)
+          time.sleep(.5)
+        self.around_wall()
 
+    def move_and_swerve(self):
+      while True:
+        self.fwd()
+        self.servo(2000)
+        time.sleep(.2)
+        if self.read_distance() <400:
+          self.swerve()
+        self.servo(self.MIDPOINT)
+        time.sleep(.2)
+        if self.read_distance() <400:
+          self.swerve()
+        self.servo(1000)
+        time.sleep(.2)
+        if self.read_distance() < 400:
+          self.servo()
+
+    def around_wall(self):
+      self.stop()
+      self.servo(2000)
+      left = self.read_distance()
+      time.sleep(.5)
+      self.servo(1000)
+      right= self.read_distance()
+      time.sleep(.5)
+      if right> left:
+        self.turn_by_deg(90)
+        self.servo(2000)
+        self.fwd()
+        if self.read_distance() > 600:
+          time.sleep(2)
+          self.stop()
+          self.turn_by_deg(-90)
+        else:
+          self.turn_by_deg(-90)
+          self.servo(1000)
+          self.fwd()
+          if self.read_distance() > 300:
+            time.sleep(2)
+            self.stop()
+            self.turn_by_deg(90)
+
+    def swerve(self):
+      self.stop()
+      self.servo(2000)
+      left = self.read_distance ()
+      time.sleep(.5)
+      self.servo(1000)
+      right = self.read_distance()
+      time.sleep(.5)
+      self.servo(self.MIDPOINT)
+      mid = self.read_distance()
+      time.sleep(.5)
+      if mid > right or mid > left:
+        if right > left:
+          self.right (primary= 90, counter=20)
+          time.sleep(1)
+          self.stop()
+          self.left(primary=90, counter= 20)
+          time.sleep(1)
+          self.stop()
+        else: 
+          self.left(primary=90, counter= 20)
+          time.sleep(1)
+          self.stop()
+          self.right(primary = 90, counter= 20)
+          time.sleep(1)
+          self.stop()
+      else:
+        self.around_wall()
+        
+          
+          
     def example_move(self):
         """this is an example dance move that should be replaced by student-created content"""
         self.right() # start rotating right

@@ -171,7 +171,7 @@ class Piggy(PiggyParent):
           time.sleep(.5)
           if self.read_distance() < 500:
 
-        self.around_wall()
+            self.around_wall()
 
     def move_and_swerve(self):
       while True:

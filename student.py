@@ -197,6 +197,13 @@ class Piggy(PiggyParent):
       time.sleep(.5)
       if right> left:
         self.turn_by_deg(90)
+        self.fwd()
+        time.sleep(1)
+        self.turn_by_deg(-90)
+        
+        
+        
+        
         self.servo(2000)
         self.fwd()
         if self.read_distance() > 600:

@@ -128,36 +128,13 @@ class Piggy(PiggyParent):
       return True
       
     def move_around_box(self):
-      safe =True
-      print ("HI")
+      
       while True:
         self.servo(self.MIDPOINT)
         self.fwd()
         if self.read_distance() <= 300:
           self.stop()
-          self.servo(2500)
-          self.turn_by_deg(60)
-          while self.read_distance() <=500:
-            self.fwd()
-            if self.read_distance() <=300:
-              self.stop()
-              self.turn_by_deg(15)
-          self.fwd()
-          time.sleep(1)
-          self.stop()
-          self.turn_by_deg(-45)
-          self.servo(2500)
-          while safe:
-            if self.read_distance() <= 300:
-              self.turn_by_deg(90)
-              self.fwd()
-              time.sleep(1)
-              self.stop
-              safe= True
-            else:
-              self.turn_by_deg(-90)
-              safe = False
-      
+          self.around_wall()      
         
         
 
@@ -200,24 +177,14 @@ class Piggy(PiggyParent):
         self.fwd()
         time.sleep(1)
         self.turn_by_deg(-90)
-        
-        
-        
-        
-        self.servo(2000)
+      else:
+        self.turn_by_deg(-90)
         self.fwd()
-        if self.read_distance() > 600:
-          time.sleep(2)
-          self.stop()
-          self.turn_by_deg(-90)
-        else:
-          self.turn_by_deg(-90)
-          self.servo(1000)
-          self.fwd()
-          if self.read_distance() > 300:
-            time.sleep(2)
-            self.stop()
-            self.turn_by_deg(90)
+        time.sleep(1)
+        self.turn_by_deg(90)
+        
+        
+       
 
     def swerve(self):
       self.stop()
